@@ -5,7 +5,7 @@ pipeline{
             steps {
                 script {
 
-                    git branch: 'main', url: 'https://github.com/oluchi29/nod-jenkins.git'
+                    git branch: 'main', url: 'https://github.com/Oluchi29/python-docker-project.git'
                 }
             }
         }
@@ -13,7 +13,7 @@ pipeline{
             steps{
                 sh 'printenv'
                 sh 'git version'
-                sh 'dcocker build . -t luchi1985/imag4.0'
+                sh 'docker build . -t luchi1985/imag4.0'
             }
         }
         stage("Push image to Dockerhub") {
@@ -24,10 +24,8 @@ pipeline{
                   withCredentials([string(credentialsId: 'dockerID', variable: 'dockerID')]) {
                     sh 'docker login -u luchi1985 -p ${dockerID}'   
                 }
-                sh 'docker push luchi1985/imag3.0:latest'
+                sh 'docker push luchi1985/imag4.0:latest'
             }
         }
     }
 }
-
-
