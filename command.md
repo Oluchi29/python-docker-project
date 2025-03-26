@@ -60,14 +60,43 @@ terraform apply --auto-approve
 7. Make sure u are the in the infra folder directory and run all the necessary terraform commands. 
 go back to your project directory and push to github running the below commands
 
+git status
+git add .
+git commit -m "files"
+git push
 
-8.Configure the Jenkins ,download docker plugins and dockerhub credentials,just make sure is ready for cicd process 
+
+8.Configure the Jenkins ,download docker plugins and dockerhub credentials,just make sure is ready for cicd process
+
+jenkins - manage jenkins - plugins - docker pipeline-git server then click on install
+
+manage jenkins- credentials- global - system - global credentials(unrestricted) - new credentials
+kind - secret text -scope - secret(dockerhub pw) -ID - create
+
+new items - pipeline - ok 
+description - pipeline - pipline scrit from scm -scm - git - repository url- branch - main - script path - jenkinsfile - save
+
+
+Build now
+
+
+pipeline syntax (note u use the when ure using kind - secret text not kind - username and password) 
+withcredentials -bind credentials to variables - bindings - add - secret text - variable name (e.g dockerID)
+credentials - add - jenkins - global cred - kind- secret text - secret - docker pw - ID - dockerID - ADD
+
+note since uve added ur credentials earlier u dont need to undergo d process so after d variable name go ahead and click on
+
+GENERATE PIPELINE SCRIPT
+THIS is what u copy and paste on d dockerpush stage in d jenkinsfile
+
+scroll to with credentials
 9.create your pipeline s rip call it Jenkinsfile 
 Now inside your pipeline create all neccessary stages
 Git checkout 
 Build docker image stage 
 Push to dockerhub stage
-Finally confirm if the container  app docker image is there in dockerhub 
+
+Finally confirm if the container  app docker image is there in dockerhub
 
 create another file Jenkinsfile
 
