@@ -42,14 +42,25 @@ terraform fmt
  terraform validate
 terraform plan
 
+terraform apply --auto-approve
+
  run your public ip on your browser e.g 
+ on a new termunal go to Downloads
  ssh the public ip on aws and run it on vscode
+ on the machine install java, jenkins, docker
+ below are the scripts
  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
  paste the password on jenkins browser
 
+
+
   terraform destroy    
+
   
 7. Make sure u are the in the infra folder directory and run all the necessary terraform commands. 
+go back to your project directory and push to github running the below commands
+
+
 8.Configure the Jenkins ,download docker plugins and dockerhub credentials,just make sure is ready for cicd process 
 9.create your pipeline s rip call it Jenkinsfile 
 Now inside your pipeline create all neccessary stages
